@@ -1,0 +1,29 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="stateLearner:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/stateLearner_jar</output-path>
+    <root id="archive" name="stateLearner.jar">
+      <element id="module-output" name="stateLearner" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/automatalib/automata-api/0.6.0/automata-api-0.6.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/de/learnlib/learnlib-dhc/0.12.0/learnlib-dhc-0.12.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/de/learnlib/learnlib-discrimination-tree/0.12.0/learnlib-discrimination-tree-0.12.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/de/learnlib/learnlib-ttt/0.12.0/learnlib-ttt-0.12.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/automatalib/automata-core/0.6.0/automata-core-0.6.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/de/learnlib/learnlib-algorithm-features/0.12.0/learnlib-algorithm-features-0.12.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/automatalib/automata-commons-dotutil/0.6.0/automata-commons-dotutil-0.6.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/de/learnlib/learnlib-simulator/0.12.0/learnlib-simulator-0.12.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/code/findbugs/jsr305/2.0.3/jsr305-2.0.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/de/learnlib/learnlib-basic-eqtests/0.12.0/learnlib-basic-eqtests-0.12.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/guava/guava/18.0/guava-18.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/automatalib/automata-incremental/0.6.0/automata-incremental-0.6.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/de/learnlib/learnlib-acex/0.12.0/learnlib-acex-0.12.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/automatalib/automata-commons-util/0.6.0/automata-commons-util-0.6.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/de/learnlib/learnlib-cache/0.12.0/learnlib-cache-0.12.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/de/learnlib/learnlib-lstar-generic/0.12.0/learnlib-lstar-generic-0.12.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/automatalib/automata-commons-smartcollections/0.6.0/automata-commons-smartcollections-0.6.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/de/learnlib/learnlib-counterexamples/0.12.0/learnlib-counterexamples-0.12.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/de/learnlib/learnlib-kearns-vazirani/0.12.0/learnlib-kearns-vazirani-0.12.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/de/learnlib/learnlib-core/0.12.0/learnlib-core-0.12.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/automatalib/automata-util/0.6.0/automata-util-0.6.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

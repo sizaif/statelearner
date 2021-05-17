@@ -1,0 +1,16 @@
+me               = CN
+            stateOrProvinceName       = SHANXI
+            organizationName          = XDU
+            organizationalUnitName    = xdusec
+            commonName                = test
+            emailAddress              = xdusec@test.com
+        X509v3 extensions:
+            X509v3 Subject Key Identifier:
+                C7:FA:A6:F9:B8:7C:19:F3:4C:B3:20:97:D8:9D:25:3C:7E:99:2B:61
+            X509v3 Authority Key Identifier:
+                keyid:C7:FA:A6:F9:B8:7C:19:F3:4C:B3:20:97:D8:9D:25:3C:7E:99:2B:61
+
+            X509v3 Basic Constraints: critical
+                CA:TRUE
+
+PEM: test

@@ -1,0 +1,29 @@
+May 15, 2021 8:08:58 AM nl.cypherpunk.statelearner.Learner <init>
+INFO: Using TLS SUL to test
+May 15, 2021 8:08:59 AM nl.cypherpunk.statelearner.Learner learn
+INFO: Using learning algorithm ExtensibleLStarMealy
+May 15, 2021 8:08:59 AM nl.cypherpunk.statelearner.Learner learn
+INFO: Using equivalence algorithm MealyModifiedWMethodEQOracle
+May 15, 2021 8:08:59 AM nl.cypherpunk.statelearner.Learner learn
+INFO: Starting learning
+May 15, 2021 8:08:59 AM de.learnlib.logging.LearnLogger logPhase
+INFO: Starting round 1
+May 15, 2021 8:15:04 AM nl.cypherpunk.statelearner.Learner learn
+INFO: -------------------------------------------------------
+May 15, 2021 8:15:04 AM nl.cypherpunk.statelearner.Learner learn
+INFO: Learning [ms]: 249977, (249.977 s)
+Searching for counter-example [ms]: 113225, (113.225 s)
+Total time [ms]: 364959, (364.959 s)
+
+May 15, 2021 8:15:04 AM nl.cypherpunk.statelearner.Learner learn
+INFO: Rounds []: 1
+May 15, 2021 8:15:04 AM nl.cypherpunk.statelearner.Learner learn
+INFO: membership queries to SUL [queries]: 512
+May 15, 2021 8:15:04 AM nl.cypherpunk.statelearner.Learner learn
+INFO: membership queries to cache [queries]: 512
+May 15, 2021 8:15:04 AM nl.cypherpunk.statelearner.Learner learn
+INFO: equivalence queries to SUL [queries]: 193
+May 15, 2021 8:15:04 AM nl.cypherpunk.statelearner.Learner learn
+INFO: equivalence queries to cache [queries]: 193
+May 15, 2021 8:15:04 AM nl.cypherpunk.statelearner.Learner learn
+INFO: States in final hypothesis: 7
