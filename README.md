@@ -1,5 +1,7 @@
 # StateLearner
 
+>changed by sizaif
+
 StateLearner is a tool that can learn state machines from implementations using a black-box approach. It makes use of LearnLib for the learning specific algorithms.
 
 This tool can be used for TLS implementations, smart cards and can be extended using its socket module. 
@@ -9,12 +11,18 @@ An overview of different security protocols where state machine learning has bee
 ## Requirements
 
 * graphviz
+```bash
+sudo apt-get install graphviz
+```
 
 ## Build
 
 Build a self-contained jar file using the following command:
 
-`mvn package shade:shade`
+```bash
+mvn package shade:shade
+```
+
 
 ## Usage
 
@@ -26,6 +34,7 @@ Example configurations can be found in the 'examples' directory. To run the Open
 cd examples/openssl
 java -jar ../../target/stateLearner-0.0.1-SNAPSHOT.jar server.properties
 ```
+openssl && gnutls example properties in experiments/args/
 
 ## Publications
 
