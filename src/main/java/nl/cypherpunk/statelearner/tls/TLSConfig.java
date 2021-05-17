@@ -99,4 +99,22 @@ public class TLSConfig extends LearningConfig {
 			timeout = Integer.parseInt(properties.getProperty("timeout"));
 	}
 
+
+	@Override
+	public String toString() {
+		return "TLSConfig{" +
+				"alphabet='" + alphabet + '\n' +
+				", target='" + target + '\n' +
+				", cmd='" + cmd + '\n' +
+				", cmd_version='" + cmd_version + '\n' +
+				", version='" + version + '\n' +
+				", keystore_filename='" + keystore_filename + '\n' +
+				", keystore_password='" + keystore_password + '\n' +
+				", host='" + host + '\n' +
+				", port=" + port +
+				", restart=" + restart +
+				", console_output=" + console_output +
+				", timeout=" + timeout +
+				'}';
+	}
 }

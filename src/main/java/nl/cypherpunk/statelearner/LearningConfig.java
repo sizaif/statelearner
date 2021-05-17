@@ -68,6 +68,7 @@ public class LearningConfig {
 	}
 
 	public void loadProperties() {
+
 		if(properties.getProperty("output_dir") != null)
 			output_dir = properties.getProperty("output_dir");
 		

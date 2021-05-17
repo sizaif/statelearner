@@ -89,9 +89,15 @@ public class Learner {
 		this.config = config;
 		
 		// Create output directory if it doesn't exist
+		System.out.println(config.output_dir);
 		Path path = Paths.get(config.output_dir);
-		if(Files.notExists(path)) {
+		//System.out.println(this.getClass().getClassLoader().getResourceAsStream(config.output_dir).toString());
+		//Path path = Paths.get(this.getClass().getClassLoader().getResourceAsStream(config.output_dir).toString());
+		System.out.println(path);
+		System.out.println(Files.exists(path));
+		if(!Files.exists(path)) {
 			Files.createDirectories(path);
+			System.out.println("create Director succerfuly");
 		}
 		
 		configureLogging(config.output_dir);
@@ -116,10 +122,14 @@ public class Learner {
 			alphabet = ((SocketSUL)sul).getAlphabet();			
 		}
 		else if(config.type == LearningConfig.TYPE_TLS) {
-			log.log(Level.INFO, "Using TLS SUL");
+			log.log(Level.INFO, "Using TLS SUL to test");
 			
 			// Create the TLS SUL
+//			TLSConfig tlsConfig = new TLSConfig(config);
+//			System.out.println(tlsConfig.toString());
+
 			sul = new TLSSUL(new TLSConfig(config));
+			System.out.println("is over ???? ");
 			alphabet = ((TLSSUL)sul).getAlphabet();			
 		}
 		
@@ -348,7 +358,7 @@ public class Learner {
 			System.err.println("Invalid number of parameters");
 			System.exit(-1);
 		}
-		
+		System.out.println(args[0]);
 		LearningConfig config = new LearningConfig(args[0]);
 	
 		Learner learner = new Learner(config);

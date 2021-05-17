@@ -30,7 +30,7 @@ public class TLSSUL implements StateLearnerSUL<String, String> {
 	
 	public TLSSUL(TLSConfig config) throws Exception {
 		alphabet = new SimpleAlphabet<String>(Arrays.asList(config.alphabet.split(" ")));
-		
+
 		tls = new TLSTestService();
 		
 		tls.setTarget(config.target);
@@ -48,7 +48,6 @@ public class TLSSUL implements StateLearnerSUL<String, String> {
 		else {
 			tls.useTLS12();
 		}
-		
 		tls.start();
 	}
 	
