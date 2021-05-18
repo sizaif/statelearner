@@ -70,6 +70,17 @@
 			<groupId>net.automatalib</groupId>
 			<artifactId>automata-commons-dotutil</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.beust</groupId>
+			<artifactId>jcommander</artifactId>
+			<version>1.78</version>
+		</dependency>
+		<dependency>
+			<groupId>de.rub.nds.tlsattacker</groupId>
+			<artifactId>TLS-Core</artifactId>
+			<version>3.6.0</version>
+			<type>jar</type>
+		</dependency>
 	</dependencies>
 
 	<repositories>

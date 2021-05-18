@@ -1,0 +1,3 @@
+gnutls-serv: Command line arguments are not allowed.
+Usage: gnutls-serv [options]
+gnutls-serv --help for usage instructions.

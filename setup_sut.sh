@@ -2,7 +2,6 @@
 #
 # Setup SUT which may involve downloading, patching, installing dependencies and building
 # The goal is to have a runnable SUT
-
 # SCRIPT_DIR should correpond to dtls-fuzzer's root directory
 readonly SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 # dir where the suts are stored
@@ -14,12 +13,10 @@ readonly SUT_JAR_DIR="$SCRIPT_DIR/experiments/suts"
 readonly PATCHES_DIR="$SCRIPT_DIR/experiments/patches"
 # dir where the modules SUTs rely on are stored
 readonly MODULES_DIR="$SCRIPT_DIR/modules"
-
 # the names of the suts for which directories are created should be consistent with the names appearing in argument files
 # variable naming allows us to determine via dynamic variable resolution whether, for exemple, an SUT is fetched from a repository or from some archive
 readonly MBEDTLS="mbedtls-2.16.1"
 readonly MBEDTLS_ARCH_URL='https://tls.mbed.org/download/mbedtls-2.16.1-gpl.tgz'
-
 readonly GNUTLS_OLD_367='gnutls-3.6.7'
 readonly GNUTLS_OLD_367_ARCH_URL='ftp://ftp.gnutls.org/gcrypt/gnutls/v3.6/gnutls-3.6.7.tar.xz'
 readonly GNUTLS_OLD_338='gnutls-3.3.8'
@@ -28,14 +25,12 @@ readonly GNUTLS_OLD_3312='gnutls-3.3.12'
 readonly GNUTLS_OLD_3312_ARCH_URL='ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3/gnutls-3.3.12.tar.xz'
 readonly GNUTLS_OLD_3519='gnutls-3.5.19'
 readonly GNUTLS_OLD_3519_ARCH_URL='ftp://ftp.gnutls.org/gcrypt/gnutls/v3.5/gnutls-3.5.19.tar.xz'
-
 readonly OPENSSL_111b='openssl-1.1.1b'
 readonly OPENSSL_111b_ARCH_URL='https://www.openssl.org/source/old/1.1.1/openssl-1.1.1b.tar.gz'
 readonly OPENSSL_111j='openssl-1.1.1j'
 readonly OPENSSL_111j_ARCH_URL='https://www.openssl.org/source/old/1.1.1/openssl-1.1.1j.tar.gz'
 readonly OPENSSL_101j='openssl-1.0.1i'
 readonly OPENSSL_101j_ARCH_URL='https://www.openssl.org/source/old/1.0.1/openssl-1.0.1j.tar.gz'
-
 readonly ETINYDTLS='etinydtls'
 readonly ETINYDTLS_REP_URL='https://github.com/eclipse/tinydtls.git'
 readonly ETINYDTLS_COMMIT='8414f8a'
@@ -49,7 +44,6 @@ readonly SCANDIUM_NEW='scandium-2.0.0_latest'
 readonly SCANDIUM_NEW_JAR_PATH="$SUT_JAR_DIR/scandium-2.0.0-dtls-server_latest.jar"
 readonly JSSE_12="jsse-12.0.2"
 readonly JSSE_12_JVM_URL="https://download.java.net/java/GA/jdk12.0.2/e482c34c86bd4bf8b56c0b35558996b9/10/GPL/openjdk-12.0.2_linux-x64_bin.tar.gz"
-
 readonly LIB_NETTLE_ARCH_URL="https://ftp.gnu.org/gnu/nettle/nettle-3.4.1.tar.gz"
 readonly LIB_NETTLE="nettle-3.4.1"
 readonly AUTOCONF_ARCH_URL="https://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz"
@@ -58,13 +52,10 @@ readonly M4_ARCH_URL="https://ftp.gnu.org/gnu/m4/m4-1.4.18.tar.gz"
 readonly M4="m4-1.4.18"
 readonly LIBTOOL_ARCH_URL="http://ftpmirror.gnu.org/libtool/libtool-2.4.6.tar.gz"
 readonly LIBTOOL="libtool-2.4.6"
-
 readonly WOLFSSL="wolfssl-4.0.0"
 readonly WOLFSSL_ARCH_URL='https://github.com/wolfSSL/wolfssl/archive/v4.0.0-stable.tar.gz'
-
 sutvarnames=("OPENSSL_111b" "OPENSSL_101j" "OPENSSL_111j" "MBEDTLS" "ETINYDTLS" "CTINYDTLS" "GNUTLS_OLD_338" "GNUTLS_OLD_3519" "GNUTLS_OLD_3312" "GNUTLS_OLD_367" "SCANDIUM_OLD" "SCANDIUM_NEW" "JSSE_12" "WOLFSSL")
 sut_strings=($OPENSSL_111b $OPENSSL_101j $OPENSSL_111j $MBEDTLS $ETINYDTLS $CTINYDTLS $GNUTLS_OLD_338 $GNUTLS_OLD_367 $GNUTLS_OLD_3312 $GNUTLS_OLD_3519 $SCANDIUM_OLD $SCANDIUM_NEW $JSSE_12 $WOLFSSL)
-
 function get_sutvarname() {
     for varname in ${sutvarnames[*]}
     do
