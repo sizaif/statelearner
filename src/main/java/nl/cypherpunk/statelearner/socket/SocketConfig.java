@@ -33,7 +33,7 @@ public class SocketConfig extends LearningConfig {
 		super(filename);
 	}
 	
-	public SocketConfig(LearningConfig config) {
+	public SocketConfig(LearningConfig config) throws IOException {
 		super(config);
 	}
 

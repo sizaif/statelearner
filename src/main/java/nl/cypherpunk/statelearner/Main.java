@@ -70,9 +70,11 @@ public class Main {
     }
     /*
      * Generates a file comprising the entire command given to to fuzzer.
+     * Copy the input command line into the command.args file in the output directory
      */
     private static void copyArgsToOutDir(String[] args, String outDir)
             throws IOException {
+
         FileOutputStream fw = new FileOutputStream(new File(outDir, ARGS_FILE));
         PrintStream ps = new PrintStream(fw);
         for (String arg : args) {

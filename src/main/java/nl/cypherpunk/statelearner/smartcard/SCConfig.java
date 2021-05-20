@@ -29,7 +29,7 @@ public class SCConfig extends LearningConfig {
 		super(filename);
 	}
 
-	public SCConfig(LearningConfig config) {
+	public SCConfig(LearningConfig config) throws IOException {
 		super(config);
 	}
 

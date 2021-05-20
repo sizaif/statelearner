@@ -44,7 +44,7 @@ public class TLSConfig extends LearningConfig {
 		super(filename);
 	}
 	
-	public TLSConfig(LearningConfig config) {
+	public TLSConfig(LearningConfig config) throws IOException {
 		super(config);
 	}	
 	

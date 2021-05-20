@@ -16,10 +16,7 @@
 
 package nl.cypherpunk.statelearner;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -84,7 +81,8 @@ public class Learner {
 	MealyCacheOracle<String, String> cachedEqOracle;
 	MealyCounterOracle<String, String> statsCachedEqOracle;
 	EquivalenceOracle<MealyMachine<?, String, ?, String>, String, Word<String>> equivalenceAlgorithm;
-	
+
+	private static String ARGS_FILE = "command.args";
 	public Learner(LearningConfig config) throws Exception {
 		this.config = config;
 		
@@ -360,12 +358,31 @@ public class Learner {
 		}
 		System.out.println(args[0]);
 		LearningConfig config = new LearningConfig(args[0]);
-	
 		Learner learner = new Learner(config);
+		copyArgsToOutDir(args,config.output_dir);
 		learner.learn();
 
+	}
 
+	/**
+	 *  Copy the input command line into the command.args file in the output directorymavne
+	 * @param args
+	 * @param outDir
+	 * @throws IOException
+	 */
+	private static void copyArgsToOutDir(String[] args, String outDir)
+			throws IOException {
+		FileOutputStream fw = new FileOutputStream(new File(outDir, ARGS_FILE));
+		PrintStream ps = new PrintStream(fw);
+		File argsFile = new File(args[0]);
+		if (!argsFile.exists()) {
+			System.err.println("Arguments file " + argsFile
+					+ "has been moved ");
+		} else {
+			com.google.common.io.Files.copy(argsFile, fw);
+		}
 
-
+		ps.close();
+		fw.close();
 	}
 }
