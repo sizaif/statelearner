@@ -40,7 +40,7 @@ public class Main {
         commander.setAllowParameterOverwriting(true);
         try {
             commander.parse(args);
-            System.out.println("LINe");
+            System.out.println("comander.parse done");
             if (config.getGeneralDelegate().isHelp()){
                 System.out.println("help");
                 commander.usage();
@@ -48,13 +48,16 @@ public class Main {
             }
 
             config.getGeneralDelegate().applyDelegate(null);
+            // create output dir
             File outputFolder = new File(config.getOutput());
             outputFolder.mkdirs();
 
             try {
                 // this is an extra step done to store the running arguments
+                // put all commander args to commander.args
                 copyArgsToOutDir(args, config.getOutput());
-//                DtlsFuzzer tester = new DtlsFuzzer(config);
+                //System.out.println("times: "+config.getTestRunnerConfig().getTimes());
+//                TLSFuzzer tester = new TLSFuzzer(config);
 //                tester.startTesting();
             } catch (Exception E) {
                 LOGGER.error("Encountered an exception. See debug for more info.");
