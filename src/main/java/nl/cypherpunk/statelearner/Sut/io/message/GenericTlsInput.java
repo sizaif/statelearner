@@ -122,8 +122,7 @@ public class GenericTlsInput extends NamedTlsInput {
                     ex.printStackTrace();
                 }
                 if (mv != null) {
-                    if (mv.getModification() != null
-                            || mv.isCreateRandomModification()) {
+                    if (mv.getModification() != null || mv.isCreateRandomModification()) {
                         mv.setOriginalValue(null);
                     } else {
                         try {

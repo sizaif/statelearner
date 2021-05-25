@@ -5,6 +5,7 @@ import de.learnlib.api.oracle.MembershipOracle.MealyMembershipOracle;
 import net.automatalib.words.Alphabet;
 import net.automatalib.words.Word;
 import nl.cypherpunk.statelearner.Config.TLSFuzzerConfig;
+import nl.cypherpunk.statelearner.Sut.io.AlphabetFactory;
 import nl.cypherpunk.statelearner.Sut.io.message.TlsInput;
 import nl.cypherpunk.statelearner.Sut.io.message.TlsOutput;
 import org.apache.logging.log4j.LogManager;
