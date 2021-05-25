@@ -29,18 +29,22 @@ public class ClientHelloWithSessionIdInput extends NamedTlsInput {
      */
     @XmlAttribute(name = "resetCookie", required = false)
     private boolean resetCookie = false;
+
+    /**
+     * tls reset
+     * @param state
+     */
     private void resetTransportHandler(State state) {
         ResetConnectionAction resetAction = new ResetConnectionAction();
-        resetAction.setConnectionAlias(state.getTlsContext().getConnection()
-                .getAlias());
+        resetAction.setConnectionAlias(state.getTlsContext().getConnection().getAlias());
         resetAction.execute(state);
         // we add the resets that should be in TLS-Attacker just to ensure
         // we don't relly on the specific TLS-Attacker version
+
 //        state.getTlsContext().setDtlsNextReceiveSequenceNumber(0);
 //        state.getTlsContext().setDtlsNextSendSequenceNumber(0);
 //        state.getTlsContext().setDtlsSendEpoch(0);
 //        state.getTlsContext().setDtlsNextReceiveEpoch(0);
-
         if (resetCookie) {
             state.getTlsContext().setDtlsCookie(null);
         }
@@ -52,6 +56,6 @@ public class ClientHelloWithSessionIdInput extends NamedTlsInput {
 
     @Override
     public TlsInputType getInputType() {
-        return null;
+        return TlsInputType.HANDSHAKE;
     }
 }

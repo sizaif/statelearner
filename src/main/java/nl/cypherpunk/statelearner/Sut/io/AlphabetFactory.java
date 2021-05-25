@@ -44,17 +44,14 @@ public class AlphabetFactory {
         }
         return alphabet;
     }
-    public static Alphabet<TlsInput> buildDefaultAlphabet()
-            throws JAXBException, IOException, XMLStreamException {
-        return AlphabetSerializer.read(AlphabetFactory.class
-                .getResourceAsStream(DEFAULT_ALPHABET));
+    public static Alphabet<TlsInput> buildDefaultAlphabet() throws JAXBException, IOException, XMLStreamException {
+        return AlphabetSerializer.read(AlphabetFactory.class.getResourceAsStream(DEFAULT_ALPHABET));
     }
     public static Alphabet<TlsInput> buildConfiguredAlphabet(TLSFuzzerConfig config) throws FileNotFoundException,
             JAXBException, IOException, XMLStreamException {
         Alphabet<TlsInput> alphabet = null;
         if (config.getAlphabet() != null) {
-            alphabet = AlphabetSerializer.read(new FileInputStream(config
-                    .getAlphabet()));
+            alphabet = AlphabetSerializer.read(new FileInputStream(config.getAlphabet()));
         }
         return alphabet;
     }

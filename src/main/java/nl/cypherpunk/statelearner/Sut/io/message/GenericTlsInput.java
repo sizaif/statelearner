@@ -140,7 +140,6 @@ public class GenericTlsInput extends NamedTlsInput {
 
     @Override
     public TlsInputType getInputType() {
-        return TlsInputType.fromProtocolMessageType(message
-                .getProtocolMessageType());
+        return TlsInputType.fromProtocolMessageType(message.getProtocolMessageType());
     }
 }

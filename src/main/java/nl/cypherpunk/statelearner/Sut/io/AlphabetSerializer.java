@@ -54,8 +54,7 @@ public class AlphabetSerializer {
         AlphabetPojo alphabetPojo = (AlphabetPojo) unmarshaller.unmarshal(xsr);
         return new ListAlphabet<TlsInput>(alphabetPojo.getWords());
     }
-    public static void write(OutputStream alphabetStream,
-                             Alphabet<TlsInput> alphabet) throws JAXBException, IOException {
+    public static void write(OutputStream alphabetStream, Alphabet<TlsInput> alphabet) throws JAXBException, IOException {
         Marshaller m = getJAXBContext().createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 

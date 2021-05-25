@@ -80,6 +80,6 @@ public class ClientHelloInput extends NamedTlsInput {
 
     @Override
     public TlsInputType getInputType() {
-        return null;
+        return TlsInputType.HANDSHAKE;
     }
 }
