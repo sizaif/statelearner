@@ -1,4 +1,4 @@
-package nl.cypherpunk.statelearner.Sut.io;
+package nl.cypherpunk.statelearner.Sut.io.message;
 
 /**
  * @ClassName TlsOutput

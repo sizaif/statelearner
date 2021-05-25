@@ -4,8 +4,8 @@ import de.rub.nds.tlsattacker.core.protocol.message.AlertMessage;
 import de.rub.nds.tlsattacker.core.protocol.message.ProtocolMessage;
 import de.rub.nds.tlsattacker.core.state.State;
 import de.rub.nds.tlsattacker.core.workflow.action.GenericReceiveAction;
-import nl.cypherpunk.statelearner.Sut.io.TlsInput;
-import nl.cypherpunk.statelearner.Sut.io.TlsOutput;
+import nl.cypherpunk.statelearner.Sut.io.message.TlsInput;
+import nl.cypherpunk.statelearner.Sut.io.message.TlsOutput;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

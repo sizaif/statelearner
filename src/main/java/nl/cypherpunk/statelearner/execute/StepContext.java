@@ -3,7 +3,7 @@ package nl.cypherpunk.statelearner.execute;
 import de.rub.nds.tlsattacker.core.protocol.message.HandshakeMessage;
 import de.rub.nds.tlsattacker.core.protocol.message.ProtocolMessage;
 import de.rub.nds.tlsattacker.core.record.AbstractRecord;
-import nl.cypherpunk.statelearner.Sut.io.TlsInput;
+import nl.cypherpunk.statelearner.Sut.io.message.TlsInput;
 
 import java.util.Collections;
 import java.util.List;

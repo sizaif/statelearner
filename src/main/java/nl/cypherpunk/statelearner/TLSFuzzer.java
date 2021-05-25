@@ -5,8 +5,8 @@ import de.learnlib.api.oracle.MembershipOracle.MealyMembershipOracle;
 import net.automatalib.words.Alphabet;
 import net.automatalib.words.Word;
 import nl.cypherpunk.statelearner.Config.TLSFuzzerConfig;
-import nl.cypherpunk.statelearner.Sut.io.TlsInput;
-import nl.cypherpunk.statelearner.Sut.io.TlsOutput;
+import nl.cypherpunk.statelearner.Sut.io.message.TlsInput;
+import nl.cypherpunk.statelearner.Sut.io.message.TlsOutput;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -71,6 +71,7 @@ public class TLSFuzzer {
      */
     private void runTest(TLSFuzzerConfig config) throws IOException {
         MealyMembershipOracle<TlsInput, TlsOutput> sutOracle = createTestOracle(config);
+
         Alphabet<TlsInput> alphabet = AlphabetFactory.buildAlphabet(config);
         TestRunner runner = new TestRunner(config.getTestRunnerConfig(),
                 alphabet, sutOracle);
@@ -90,31 +91,30 @@ public class TLSFuzzer {
             }
         }
     }
-//
-//    /*
-//     * creates basic membership oracle for running tests
-//     */
-//    private MealyMembershipOracle<TlsInput, TlsOutput> createTestOracle(
-//            TLSFuzzerConfig config) {
-//        TlsSUL actualSut = new TlsSUL(config.getSulDelegate(),
-//                new TestingInputExecutor());
-//        SUL<TlsInput, TlsOutput> tlsSut = actualSut;
-//        if (config.getSulDelegate().getCommand() != null) {
-//            tlsSut = new TlsProcessWrapper(tlsSut, config.getSulDelegate());
-//        }
-//        if (config.getSulDelegate().getResetPort() != null) {
-//            ResettingWrapper<TlsInput, TlsOutput> wrapper = new ResettingWrapper<>(
-//                    tlsSut, config.getSulDelegate(), cleanupTasks);
-//            actualSut.setDynamicPortProvider(wrapper);
-//            tlsSut = wrapper;
-//        }
-//        tlsSut = new IsAliveWrapper(tlsSut);
-//
-//        MealyMembershipOracle<TlsInput, TlsOutput> tlsOracle = new SULOracle<TlsInput, TlsOutput>(
-//                tlsSut);
-//
-//        return tlsOracle;
-//    }
+
+    /*
+     * creates basic membership oracle for running tests
+     */
+    private MealyMembershipOracle<TlsInput, TlsOutput> createTestOracle(TLSFuzzerConfig config) {
+        TlsSUL actualSut = new TlsSUL(config.getSulDelegate(),
+                new TestingInputExecutor());
+        SUL<TlsInput, TlsOutput> tlsSut = actualSut;
+        if (config.getSulDelegate().getCommand() != null) {
+            tlsSut = new TlsProcessWrapper(tlsSut, config.getSulDelegate());
+        }
+        if (config.getSulDelegate().getResetPort() != null) {
+            ResettingWrapper<TlsInput, TlsOutput> wrapper = new ResettingWrapper<>(
+                    tlsSut, config.getSulDelegate(), cleanupTasks);
+            actualSut.setDynamicPortProvider(wrapper);
+            tlsSut = wrapper;
+        }
+        tlsSut = new IsAliveWrapper(tlsSut);
+
+        MealyMembershipOracle<TlsInput, TlsOutput> tlsOracle = new SULOracle<TlsInput, TlsOutput>(
+                tlsSut);
+
+        return tlsOracle;
+    }
 //    /*
 //     * generates model + statistics for the given SUT/learning arguments
 //     * (alphabet, learning/test algorithm, etc.)
