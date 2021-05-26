@@ -49,11 +49,12 @@ public class AlphabetSerializer {
         XMLInputFactory xif = XMLInputFactory.newFactory();
         xif.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, false);
         xif.setProperty(XMLInputFactory.SUPPORT_DTD, false);
-        XMLStreamReader xsr = xif.createXMLStreamReader(new InputStreamReader(
-                alphabetStream));
+        XMLStreamReader xsr = xif.createXMLStreamReader(new InputStreamReader(alphabetStream));
+
         AlphabetPojo alphabetPojo = (AlphabetPojo) unmarshaller.unmarshal(xsr);
         return new ListAlphabet<TlsInput>(alphabetPojo.getWords());
     }
+
     public static void write(OutputStream alphabetStream, Alphabet<TlsInput> alphabet) throws JAXBException, IOException {
         Marshaller m = getJAXBContext().createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
