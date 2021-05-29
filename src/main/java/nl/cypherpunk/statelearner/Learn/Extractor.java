@@ -40,9 +40,9 @@ public class Extractor {
     }
 
     public static class  ExtractorResult {
-        public StateMachine learnedModel;
-        public Statistics statistics;
-        public final List<StateMachine> hypotheses;
+//        public StateMachine learnedModel;
+//        public Statistics statistics;
+//        public final List<StateMachine> hypotheses;
         public File learnedModelFile;
     }
 }

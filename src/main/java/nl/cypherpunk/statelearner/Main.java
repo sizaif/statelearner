@@ -57,8 +57,11 @@ public class Main {
                 // put all commander args to commander.args
                 copyArgsToOutDir(args, config.getOutput());
                 //System.out.println("times: "+config.getTestRunnerConfig().getTimes());
-//                TLSFuzzer tester = new TLSFuzzer(config);
-//                tester.startTesting();
+                // start test learn
+                TLSFuzzer tester = new TLSFuzzer(config);
+                //
+                System.out.println("start test");
+                tester.startTesting();
             } catch (Exception E) {
                 LOGGER.error("Encountered an exception. See debug for more info.");
                 E.printStackTrace();

@@ -5,8 +5,11 @@ import de.rub.nds.tlsattacker.core.config.Config;
 import de.rub.nds.tlsattacker.core.config.delegate.ClientDelegate;
 import de.rub.nds.tlsattacker.core.constants.ProtocolVersion;
 import de.rub.nds.tlsattacker.core.exceptions.ConfigurationException;
-import nl.cypherpunk.statelearner.Sut.ProcessLaunchTrigger;
+import nl.cypherpunk.statelearner.Sut.sul.Process.ProcessLaunchTrigger;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -229,5 +232,35 @@ public class SulDelegate extends ClientDelegate {
 
     public void setResolutionCache(Map<String, String> resolutionCache) {
         this.resolutionCache = resolutionCache;
+    }
+
+    public InputStream getSulConfigInputStream() throws IOException{
+        if(sulConfig == null){
+            return SulDelegate.class.getResource(SUL_CONFIG).openStream();
+        }else {
+            return new FileInputStream(sulConfig);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "SulDelegate{" +
+                "protocolVersion=" + protocolVersion +
+                ", timeout=" + timeout +
+                ", resetWait=" + resetWait +
+                ", command='" + command + '\'' +
+                ", terminateCommand='" + terminateCommand + '\'' +
+                ", processDir='" + processDir + '\'' +
+                ", processTrigger=" + processTrigger +
+                ", runWait=" + runWait +
+                ", resetPort=" + resetPort +
+                ", resetAddress='" + resetAddress + '\'' +
+                ", resetCommandWait=" + resetCommandWait +
+                ", resetAck=" + resetAck +
+                ", sulConfig='" + sulConfig + '\'' +
+                ", withApplicationOutput=" + withApplicationOutput +
+                ", repeatingOutputs=" + repeatingOutputs +
+                ", resolutionCache=" + resolutionCache +
+                '}';
     }
 }

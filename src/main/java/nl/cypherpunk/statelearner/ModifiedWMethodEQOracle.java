@@ -22,17 +22,21 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 
+import de.learnlib.api.oracle.EquivalenceOracle;
+import de.learnlib.api.oracle.MembershipOracle;
+import de.learnlib.api.query.DefaultQuery;
 import net.automatalib.automata.UniversalDeterministicAutomaton;
 import net.automatalib.automata.concepts.Output;
 import net.automatalib.automata.fsa.DFA;
-import net.automatalib.automata.transout.MealyMachine;
+//import net.automatalib.automata.transout.MealyMachine;
+import net.automatalib.automata.transducers.MealyMachine;
 import net.automatalib.commons.util.collections.CollectionsUtil;
 import net.automatalib.util.automata.Automata;
 import net.automatalib.words.Word;
 import net.automatalib.words.WordBuilder;
-import de.learnlib.api.EquivalenceOracle;
-import de.learnlib.api.MembershipOracle;
-import de.learnlib.oracles.DefaultQuery;
+//import de.learnlib.api.EquivalenceOracle;
+//import de.learnlib.api.MembershipOracle;
+//import de.learnlib.oracles.DefaultQuery;
 
 /**
  * @author Joeri de Ruiter (j.deruiter@cs.bham.ac.uk)
@@ -60,7 +64,7 @@ public class ModifiedWMethodEQOracle<A extends UniversalDeterministicAutomaton<?
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param maxDepth
 	 *            the maximum length of the "middle" part of the test cases
 	 * @param sulOracle
@@ -77,7 +81,7 @@ public class ModifiedWMethodEQOracle<A extends UniversalDeterministicAutomaton<?
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * de.learnlib.api.EquivalenceOracle#findCounterExample(java.lang.Object,
 	 * java.util.Collection)
@@ -99,7 +103,7 @@ public class ModifiedWMethodEQOracle<A extends UniversalDeterministicAutomaton<?
 		String output;
 		Word<I> queryWord;
 		boolean blacklisted;
-		
+
 		HashSet<Word<I>> blacklist = new HashSet<Word<I>>();
 
 		for (Word<I> trans : transCover) {
@@ -114,7 +118,7 @@ public class ModifiedWMethodEQOracle<A extends UniversalDeterministicAutomaton<?
 
 			// Detect closed connection to continue with queries with different prefixes
 			if (output.endsWith("ConnectionClosed") || output.endsWith("ConnectionClosedEOF") || output.endsWith("ConnectionClosedException")) {
-				blacklist.add(trans);				
+				blacklist.add(trans);
 				continue;
 			}
 
@@ -131,37 +135,37 @@ public class ModifiedWMethodEQOracle<A extends UniversalDeterministicAutomaton<?
 							blacklisted = true;
 							break;
 						}
-					}					
+					}
 					if(blacklisted) continue;
 
 					query = new DefaultQuery<>(queryWord);
 					sulOracle.processQueries(Collections.singleton(query));
-	
+
 					hypOutput = hypothesis.computeOutput(queryWord);
-	
+
 					if (!Objects.equals(hypOutput, query.getOutput()))
 						return query;
-	
+
 					output = query.getOutput().toString();
-	
+
 					if (output.endsWith("ConnectionClosed") || output.endsWith("ConnectionClosedEOF") || output.endsWith("ConnectionClosedException")) {
 						// Remember this prefix and ignore queries starting with this after this
 						blacklist.add(queryWord);
 						continue;
 					}
-	
+
 					for (Word<I> suffix : charSuffixes) {
 						wb.append(trans).append(middle).append(suffix);
 						queryWord = wb.toWord();
 						wb.clear();
-						
+
 						query = new DefaultQuery<>(queryWord);
 						hypOutput = hypothesis.computeOutput(queryWord);
 						sulOracle.processQueries(Collections.singleton(query));
-						
+
 						if (!Objects.equals(hypOutput, query.getOutput()))
 							return query;
-						
+
 						output = query.getOutput().toString();
 						if (output.endsWith("ConnectionClosed") || output.endsWith("ConnectionClosedEOF") || output.endsWith("ConnectionClosedException")) {
 							// Remember this prefix and ignore queries starting with this after this

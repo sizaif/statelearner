@@ -1,4 +1,4 @@
-package nl.cypherpunk.statelearner.execute;
+package nl.cypherpunk.statelearner.Execute;
 
 /**
  * @ClassName Packingresult
@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * Comprises the result of packing a list of messages into records.
+ * 包含将消息列表打包到记录中的结果
  */
 public class PackingResult {
     private List<ProtocolMessage> messages;

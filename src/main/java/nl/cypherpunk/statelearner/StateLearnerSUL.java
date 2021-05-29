@@ -3,7 +3,8 @@ package nl.cypherpunk.statelearner;
 import javax.annotation.Nullable;
 
 import de.learnlib.api.SUL;
-import de.learnlib.api.SULException;
+
+import de.learnlib.api.exception.SULException;
 import net.automatalib.words.Word;
 import net.automatalib.words.WordBuilder;
 

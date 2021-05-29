@@ -3,7 +3,6 @@ package nl.cypherpunk.statelearner.Sut.io.message;
 import de.rub.nds.tlsattacker.core.protocol.message.FinishedMessage;
 import de.rub.nds.tlsattacker.core.protocol.message.ProtocolMessage;
 import de.rub.nds.tlsattacker.core.state.State;
-import nl.cypherpunk.statelearner.execute.ExecutionContext;
 
 import javax.xml.bind.annotation.XmlAttribute;
 

@@ -73,7 +73,11 @@ public class TestParser {
     public List<Word<TlsInput>> readTests(Alphabet<TlsInput> alphabet,
                                           String PATH) throws IOException {
         List<String> inputStrings = readTestStrings(PATH);
+
+        System.out.println("inputStrings " +inputStrings.toString());
+
         List<Word<TlsInput>> tests = new LinkedList<>();
+
         LinkedList<String> currentTestStrings = new LinkedList<>();
         for (String inputString : inputStrings) {
             if (inputString.equals("reset")) {
@@ -90,6 +94,7 @@ public class TestParser {
                 currentTestStrings.addAll(Arrays.asList(spSepInputs));
             }
         }
+        System.out.println(currentTestStrings.toString());
         if (!inputStrings.isEmpty()) {
             Word<TlsInput> test = readTest(alphabet, currentTestStrings, false);
             if (test != null) {
@@ -98,6 +103,7 @@ public class TestParser {
                 LOGGER.warn("Excluding invalid test " + currentTestStrings);
             }
         }
+        System.out.println(tests.toString());
         return tests;
     }
 

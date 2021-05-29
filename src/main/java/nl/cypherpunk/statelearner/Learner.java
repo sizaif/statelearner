@@ -30,25 +30,30 @@ import java.util.logging.SimpleFormatter;
 import de.learnlib.acex.analyzers.AcexAnalyzers;
 import de.learnlib.algorithms.dhc.mealy.MealyDHC;
 import de.learnlib.algorithms.kv.mealy.KearnsVaziraniMealy;
-import de.learnlib.algorithms.lstargeneric.mealy.ExtensibleLStarMealyBuilder;
+
+import de.learnlib.algorithms.lstar.mealy.ExtensibleLStarMealyBuilder;
 import de.learnlib.algorithms.malerpnueli.MalerPnueliMealy;
 import de.learnlib.algorithms.rivestschapire.RivestSchapireMealy;
 import de.learnlib.algorithms.ttt.mealy.TTTLearnerMealy;
-import de.learnlib.api.EquivalenceOracle;
-import de.learnlib.api.LearningAlgorithm;
-import de.learnlib.cache.mealy.MealyCacheOracle;
+
+import de.learnlib.api.algorithm.LearningAlgorithm;
+
+import de.learnlib.api.logging.LearnLogger;
+import de.learnlib.api.oracle.EquivalenceOracle;
+
 import de.learnlib.counterexamples.AcexLocalSuffixFinder;
-import de.learnlib.eqtests.basic.RandomWordsEQOracle.MealyRandomWordsEQOracle;
-import de.learnlib.eqtests.basic.WMethodEQOracle;
-import de.learnlib.eqtests.basic.WpMethodEQOracle;
-import de.learnlib.logging.LearnLogger;
-import de.learnlib.oracles.CounterOracle.MealyCounterOracle;
-import de.learnlib.oracles.DefaultQuery;
-import de.learnlib.oracles.SULOracle;
-import de.learnlib.statistics.Counter;
-import de.learnlib.statistics.SimpleProfiler;
-import net.automatalib.automata.transout.MealyMachine;
-import net.automatalib.util.graphs.dot.GraphDOT;
+
+import de.learnlib.filter.cache.mealy.MealyCacheOracle;
+import de.learnlib.filter.statistic.oracle.CounterOracle;
+
+import de.learnlib.oracle.equivalence.RandomWordsEQOracle;
+import de.learnlib.oracle.equivalence.WMethodEQOracle;
+import de.learnlib.oracle.equivalence.WpMethodEQOracle;
+import de.learnlib.oracle.membership.SULOracle;
+
+import net.automatalib.automata.transducers.MealyMachine;
+
+
 import net.automatalib.words.Word;
 import net.automatalib.words.impl.SimpleAlphabet;
 import nl.cypherpunk.statelearner.LogOracle.MealyLogOracle;
@@ -70,16 +75,16 @@ public class Learner {
 	StateLearnerSUL<String, String> sul;
 	SULOracle<String, String> memOracle;
 	MealyLogOracle<String, String> logMemOracle;
-	MealyCounterOracle<String, String> statsMemOracle;
+	CounterOracle.MealyCounterOracle<String, String> statsMemOracle;
 	MealyCacheOracle<String, String> cachedMemOracle;
-	MealyCounterOracle<String, String> statsCachedMemOracle;	
+	CounterOracle.MealyCounterOracle<String, String> statsCachedMemOracle;
 	LearningAlgorithm<MealyMachine<?, String, ?, String>, String, Word<String>> learningAlgorithm;
 
 	SULOracle<String, String> eqOracle;
 	MealyLogOracle<String, String> logEqOracle;
-	MealyCounterOracle<String, String> statsEqOracle;
+	CounterOracle.MealyCounterOracle<String, String> statsEqOracle;
 	MealyCacheOracle<String, String> cachedEqOracle;
-	MealyCounterOracle<String, String> statsCachedEqOracle;
+	CounterOracle.MealyCounterOracle<String, String> statsCachedEqOracle;
 	EquivalenceOracle<MealyMachine<?, String, ?, String>, String, Word<String>> equivalenceAlgorithm;
 
 	private static String ARGS_FILE = "command.args";
@@ -104,14 +109,14 @@ public class Learner {
 
 		// Check the type of learning we want to do and create corresponding configuration and SUL
 		if(config.type == LearningConfig.TYPE_SMARTCARD) {
-			log.log(Level.INFO, "Using smartcard SUL");	
+			log.debug(Level.INFO, "Using smartcard SUL");
 			
 			// Create the smartcard SUL
 			sul = new SCSUL(new SCConfig(config));
 			alphabet = ((SCSUL)sul).getAlphabet();			
 		}
 		else if(config.type == LearningConfig.TYPE_SOCKET) {
-			log.log(Level.INFO, "Using socket SUL");
+			log.debug((Level.INFO, "Using socket SUL");
 			
 			// Create the socket SUL
 			SocketConfig socketConfig = new SocketConfig(config);
@@ -120,7 +125,7 @@ public class Learner {
 			alphabet = ((SocketSUL)sul).getAlphabet();			
 		}
 		else if(config.type == LearningConfig.TYPE_TLS) {
-			log.log(Level.INFO, "Using TLS SUL to test");
+			log.debug((Level.INFO, "Using TLS SUL to test");
 			
 			// Create the TLS SUL
 //			TLSConfig tlsConfig = new TLSConfig(config);
@@ -141,11 +146,11 @@ public class Learner {
 		// Add a logging oracle
 		logMemOracle = new MealyLogOracle<String, String>(sul, LearnLogger.getLogger("learning_queries"), combine_query);
         // Count the number of queries actually sent to the SUL
-		statsMemOracle = new MealyCounterOracle<String, String>(logMemOracle, "membership queries to SUL");
+		statsMemOracle = new CounterOracle.MealyCounterOracle<String, String>(logMemOracle, "membership queries to SUL");
 		// Use cache oracle to prevent double queries to the SUL
 		//cachedMemOracle = MealyCacheOracle.createDAGCacheOracle(alphabet, statsMemOracle);
         // Count the number of queries to the cache
-		statsCachedMemOracle = new MealyCounterOracle<String, String>(statsMemOracle, "membership queries to cache");
+		statsCachedMemOracle = new CounterOracle.MealyCounterOracle<String, String>(statsMemOracle, "membership queries to cache");
 		
 		// Instantiate the selected learning algorithm
 		switch(algorithm.toLowerCase()) {
@@ -186,11 +191,11 @@ public class Learner {
 		// Add a logging oracle
 		logEqOracle = new MealyLogOracle<String, String>(sul, LearnLogger.getLogger("equivalence_queries"), combine_query);
 		// Add an oracle that counts the number of queries
-		statsEqOracle = new MealyCounterOracle<String, String>(logEqOracle, "equivalence queries to SUL");
+		statsEqOracle = new CounterOracle.MealyCounterOracle<String, String>(logEqOracle, "equivalence queries to SUL");
 		// Use cache oracle to prevent double queries to the SUL
 		//cachedEqOracle = MealyCacheOracle.createDAGCacheOracle(alphabet, statsEqOracle);
         // Count the number of queries to the cache
-		statsCachedEqOracle = new MealyCounterOracle<String, String>(statsEqOracle, "equivalence queries to cache");
+		statsCachedEqOracle = new CounterOracle.MealyCounterOracle<String, String>(statsEqOracle, "equivalence queries to cache");
 		
 		// Instantiate the selected equivalence algorithm
 		switch(algorithm.toLowerCase()) {
@@ -207,7 +212,7 @@ public class Learner {
 				break;
 				
 			case "randomwords":
-				equivalenceAlgorithm = new MealyRandomWordsEQOracle<String, String>(statsCachedEqOracle, config.min_length, config.max_length, config.nr_queries, new Random(config.seed));
+				equivalenceAlgorithm = new RandomWordsEQOracle.MealyRandomWordsEQOracle<String, String>(statsCachedEqOracle, config.min_length, config.max_length, config.nr_queries, new Random(config.seed));
 				break;
 				
 			default:

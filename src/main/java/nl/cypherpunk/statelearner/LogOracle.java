@@ -20,16 +20,16 @@ import java.util.Collection;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import de.learnlib.api.MembershipOracle;
-import de.learnlib.api.MembershipOracle.MealyMembershipOracle;
-import de.learnlib.api.Query;
-import de.learnlib.logging.LearnLogger;
+
+import de.learnlib.api.logging.LearnLogger;
+import de.learnlib.api.oracle.MembershipOracle;
+import de.learnlib.api.query.Query;
 import net.automatalib.words.Word;
 import net.automatalib.words.WordBuilder;
 
 // Based on SULOracle from LearnLib by Falk Howar and Malte Isberner
 @ParametersAreNonnullByDefault
-public class LogOracle<I, D> implements MealyMembershipOracle<I,D> {
+public class LogOracle<I, D> implements MembershipOracle.MealyMembershipOracle<I,D> {
 	public static class MealyLogOracle<I,O> extends LogOracle<I,O> {
 		public MealyLogOracle(StateLearnerSUL<I, O> sul, LearnLogger logger, boolean combine_query) {
 			super(sul, logger, combine_query);

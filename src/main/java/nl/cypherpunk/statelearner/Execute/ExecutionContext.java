@@ -49,11 +49,15 @@ public class ExecutionContext {
                 .flatMap(s -> s.getPackingResult().getRecords().stream())
                 .collect(Collectors.toList());
     }
-    // get index SetContext
-    public StepContext getSetContext(int index){
+    // get index StepContext
+    public StepContext getStepContext(int index){
         return stepContextList.get(index);
     }
     public int getStepCount(){
         return stepContextList.size();
+    }
+
+    public void addStepContext(){
+        stepContextList.add(new StepContext());
     }
 }

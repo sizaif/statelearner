@@ -152,4 +152,30 @@ public class TLSLearningConfig {
     public int getMembershipQueryRetries() {
         return membershipQueryRetries;
     }
+
+    @Override
+    public String toString() {
+        return "TLSLearningConfig{" +
+                "learningAlgorithm=" + learningAlgorithm +
+                ", equivalenceAlgorithms=" + equivalenceAlgorithms +
+                ", maxDepth=" + maxDepth +
+                ", minLength=" + minLength +
+                ", maxLength=" + maxLength +
+                ", randLength=" + randLength +
+                ", numberOfQueries=" + numberOfQueries +
+                ", runsPerMembershipQuery=" + runsPerMembershipQuery +
+                ", membershipQueryRetries=" + membershipQueryRetries +
+                ", queryFile='" + queryFile + '\'' +
+                ", probReset=" + probReset +
+                ", testFile='" + testFile + '\'' +
+                ", seed=" + seed +
+                ", cacheTests=" + cacheTests +
+                ", dontCacheTests=" + dontCacheTests +
+                ", ceSanitization=" + ceSanitization +
+                ", skipNonDetTests=" + skipNonDetTests +
+                ", ceReruns=" + ceReruns +
+                ", probabilisticSanitization=" + probabilisticSanitization +
+                ", timeLimit=" + timeLimit +
+                '}';
+    }
 }

@@ -30,4 +30,12 @@ public class TestRunnerConfig {
     public void setTimes(Integer times) {
         this.times = times;
     }
+
+    @Override
+    public String toString() {
+        return "TestRunnerConfig{" +
+                "test='" + test + '\'' +
+                ", times=" + times +
+                '}';
+    }
 }

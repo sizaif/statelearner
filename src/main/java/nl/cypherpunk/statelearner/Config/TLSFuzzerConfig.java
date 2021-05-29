@@ -78,4 +78,17 @@ public class TLSFuzzerConfig {
     public String getAlphabet() {
         return alphabet;
     }
+
+    @Override
+    public String toString() {
+        return "TLSFuzzerConfig{" +
+                "specification='" + specification + '\'' +
+                ", alphabet='" + alphabet + '\'' +
+                ", output='" + output + '\'' +
+                ", sulDelegate=" + sulDelegate +
+                ", learningConfig=" + learningConfig +
+                ", testRunnerConfig=" + testRunnerConfig +
+                ", generalDelegate=" + generalDelegate +
+                '}';
+    }
 }

@@ -34,11 +34,16 @@ public class TestRunner {
     }
     public List<TestRunnerResult<TlsInput,TlsOutput>> runTests() throws IOException{
         TestParser testParser = new TestParser();
+
         List<Word<TlsInput>> tests = testParser.readTests(alphabet, config.getTest());
+
+        System.out.println("runTests testsParser");
         List<TestRunnerResult<TlsInput, TlsOutput>> results = tests.stream().map(t -> runTest(t)).collect(Collectors.toList());
+
         return results;
     }
     private TestRunnerResult<TlsInput, TlsOutput> runTest(Word<TlsInput> test) {
+        System.out.println("runtest word");
         TestRunnerResult<TlsInput, TlsOutput> result = runTest(test, config.getTimes(), sulOracle);
         return result;
     }
@@ -48,6 +53,7 @@ public class TestRunner {
         LinkedHashMap<Word<O>, Integer> answerMap = new LinkedHashMap<>();
         for (int i = 0; i < times; i++) {
             Word<O> answer = sulOracle.answerQuery(test);
+            System.out.println(i);
             if (!answerMap.containsKey(answer)) {
                 answerMap.put(answer, 1);
             } else {

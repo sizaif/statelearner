@@ -9,8 +9,8 @@ package nl.cypherpunk.statelearner.Sut.io.message;
 
 import de.rub.nds.tlsattacker.core.protocol.message.ProtocolMessage;
 import de.rub.nds.tlsattacker.core.state.State;
-import nl.cypherpunk.statelearner.execute.AbstractInputExecutor;
-import nl.cypherpunk.statelearner.execute.ExecutionContext;
+import nl.cypherpunk.statelearner.Execute.AbstractInputExecutor;
+import nl.cypherpunk.statelearner.Execute.ExecutionContext;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

@@ -6,9 +6,10 @@ import de.rub.nds.tlsattacker.core.constants.ProtocolVersion;
 
 import java.util.Arrays;
 
-public class ProtocolVersionConverter
-		implements
-			IStringConverter<ProtocolVersion> {
+/**
+ * 协议版本转换工具
+ */
+public class ProtocolVersionConverter implements IStringConverter<ProtocolVersion> {
 
 	@Override
 	public ProtocolVersion convert(String value) {
