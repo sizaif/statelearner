@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/stateLearner.iml" filepath="$PROJECT_DIR$/stateLearner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LteStateLearner.iml" filepath="$PROJECT_DIR$/LteStateLearner.iml" />
     </modules>
   </component>
 </project>
